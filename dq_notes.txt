@@ -1,0 +1,112 @@
+X to the Y power --> z = x**y
+
+FORWARD slash \ is the escape character.
+
+Check if item in keys with "if key in dictionary:"
+
+New Functions:
+- round(a_num, precision)
+
+Slicing:
+first_4 = a_list[:4]
+last_3 = a_list[-3:]
+range_3_4 = a_list[2:4]
+
+# Read in file.
+
+
+
+# Calculating Rating Average (used for rating per/category)
+    free_apps_ratings = []
+    non_free_apps_ratings = []
+
+    for row in apps_data[1:]:
+        rating = float(row[7])
+        # Complete the code from here
+        price = float(row[4])
+        if price == 0.0:
+            free_apps_ratings.append(rating)
+        elif price > 0.0:
+            non_free_apps_ratings.append(rating)
+
+    avg_rating_free = sum(free_apps_ratings)/len(free_apps_ratings)
+
+
+# To add something to all rows:
+    for app in apps_data[1:]:
+        price = float(app[4])
+        # Complete code from here
+        if price == 0:
+            app.append("free")
+        else:
+            app.append("non-free")
+
+    apps_data[0].append("free_or_not")
+
+    print(apps_data[:6])
+
+
+# Using conditional statements.
+    for app in apps_data[1:]:
+        price = float(app[4])
+        # Complete code from here
+        if price == 0:
+            app.append("free")
+        elif price > 0 and price < 20:
+            app.append("affordable")
+        elif price >= 20 and price < 50:
+            app.append("expensive")
+        elif price >= 50:
+            app.append("very expensive")
+
+    apps_data[0].append("price_label")
+
+
+# Create frequency tables:
+
+
+
+# Adding analysis to frequency tables.
+    c_ratings_proportions = {}
+    c_ratings_percentages = {}
+
+    for rating in content_ratings:
+        proportion = content_ratings[rating]/total_number_of_apps
+        percentage = proportion*100
+
+        c_ratings_proportions[rating] = proportion
+        c_ratings_percentages[rating] = percentage
+
+
+# Making a list from a list of list (a column)
+def extract(col_index):
+    column_data = []
+    for row in apps_data[1:]:
+        column_data.append(row[col_index])
+    return(column_data)
+
+    def extract(data_set, index):
+        column = []
+        for row in data_set[1:]:
+            value = row[index]
+            column.append(value)
+        return column
+
+    def find_sum(a_list):
+        a_sum = 0
+        for element in a_list:
+            a_sum += float(element)
+        return a_sum
+
+    def find_length(a_list):
+        length = 0
+        for element in a_list:
+            length += 1
+        return length
+
+    def mean(data_set, index):
+        a_list = extract(data_set, index)
+        list_sum = find_sum(a_list)
+        list_length = find_length(a_list)
+        list_mean = list_sum/list_length
+        return(list_mean)
